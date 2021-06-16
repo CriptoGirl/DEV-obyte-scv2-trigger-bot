@@ -13,7 +13,7 @@ exports.from_email = '';
 //
 exports.base_aas = ['3DGWRKKWWSC6SV4ZQDWEHYFRYB4TGPKX', 'CD5DNSVS6ENG5UYILRPJPHAB3YXKA63W']; 
 exports.factory_aas = ['CX56T625MQDCRCQTJGYZYYWUAMCEZT2Q','YSVSAICPH5XOZPZL5UVH56MVHQKMXZCM'];
-exports.interval = 60; // 60 seconds;
+exports.interval = 1; //60; // 60 seconds;
 exports.data_feed_change_tolerance_pct = 0.0000001;
 exports.p2_change_tolerance_pct = 0.0000001;
 // do not change

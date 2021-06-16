@@ -24,10 +24,8 @@ function paired (user_address) {
 	device.sendMessageToDevice(user_address, 'text', "Welcome to Obyte Stablecoin V2 bot!");
 	device.sendMessageToDevice(user_address, 'text', "Type `operator` to get operator address ");
 	// ** check config ** //
-	if (!conf.base_aas) {
-		device.sendMessageToDevice(user_address, 'text', "Error: missing list of base AAs from the config.");
-		throw Error("Please specify base_aas in conf.json");
-	}
+	if (!conf.base_aas) device.sendMessageToDevice(user_address, 'text', 
+		"Error: missing list of base AAs from the config.");
 }
 
 // ** respond to user's message ** //
@@ -37,8 +35,32 @@ function respond (user_address, text, operator_address) {
 	// user send operator command
 	if ( text.match(/^operator/) )
 		device.sendMessageToDevice(user_address, 'text', "Operator: " + operator_address);
-	else if (!text.match(/^You said/))
-		device.sendMessageToDevice(user_address, 'text', "You said: " + text);
+	else if ( text.match(/^params/) ) {
+		let base_aas = conf.base_aas, base_aas_list = "base_aas: "
+		for (let base_aa of base_aas) {
+			base_aas_list += base_aa + ' '
+		}
+		device.sendMessageToDevice( user_address, 'text', base_aas_list );
+		
+		let factory_aas = conf.factory_aas, factory_aas_list = "factory_aas: "
+		for (let factory_aa of factory_aas) {
+			factory_aas_list += factory_aa + ' '
+		}
+		device.sendMessageToDevice( user_address, 'text', factory_aas_list );
+
+		device.sendMessageToDevice( user_address, 'text', 
+			"interval: " + conf.interval );
+		
+		device.sendMessageToDevice( user_address, 'text', 
+			"data_feed_change_tolerance_pct: " + 
+			conf.data_feed_change_tolerance_pct + '%' );
+		device.sendMessageToDevice( user_address, 'text', 
+			"p2_change_tolerance_pct: " + 
+			conf.p2_change_tolerance_pct + '%' );
+	}
+	else 
+		device.sendMessageToDevice(user_address, 'text', 
+			"Unknown command.  Type `operator` to see operator address or `parms` to see list of bot parameters." );
 }
 
 exports.sendMessage = sendMessage;
