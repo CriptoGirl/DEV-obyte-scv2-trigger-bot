@@ -75,12 +75,12 @@ async function p2 (curve_aa, stable_aas) {
 			return {status: 'DE Triggered'}
 		}
 		else {
-			//console.error('INFO: change in p2 does not exseed tolerance level.')
+			console.error('INFO: DE not Triggered. Change in p2 does not exseed tolerance level.')
 			return {status: 'DE not Triggered'}
 		}
 	}
 	else {
-		//console.error('INFO: Actual P2=', p2_actual, ' < or =  Target P2=', p2_target)
+		console.error('INFO: DE not Triggered. Actual P2=', p2_actual, ' < or =  Target P2=', p2_target)
 		return {status: 'DE not Triggered'}
 	}
 	

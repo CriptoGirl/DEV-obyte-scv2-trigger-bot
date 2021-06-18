@@ -60,7 +60,6 @@ async function estimateP2() {
 				let message = 'INFO: DE Triggered for AA:' + curve_aa
 				await bot_utils.sendMessage(message, paired_bots);
 			}
-			else  console.error('INFO: Change detected, but DE not triggered for AA:' + curve_aa)
 		}
 		else console.error('INFO: Missing Params / Vars data for AA:' + curve_aa)
 	}
